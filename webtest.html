@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
+  </head>
+
+  <body>
+
+    <div class="header">
+      <h1>Jessup Classroom Helper</h1>
+    </div>
+
+    <div class="navbar">
+      <a href="https://jessup.edu/">Jessup Home</a>
+      <a href="https://my.jessup.edu">My Jessup</a>
+      <a href="https://faculty.jessup.edu/login.asp">Faculty Portal</a>
+    </div>
+
+    <div class="row">
+      <div class="filter">
+        <h2>Filter</h2>
+        <input type="text" id="search" placeholder="Type to search">
+      </div>
+      <div class="courseList">
+        <h2>Course List</h2>
+        <table class="table table-bordered table-hover table-condensed" ; style="border:1px solid black;">
+          <thead>
+            <tr bgcolor="#304566" style="font-weight:bold; color:white">
+              <th title="Field #1" align="left">Course ID</th>
+              <th title="Field #2" align="left">Course Name</th>
+              <th title="Field #3" align="left">Days</th>
+              <th title="Field #4" align="left">Times</th>
+              <th title="Field #5" align="left">Instructor</th>
+              <th title="Field #6" align="left">Room</th>
+              <th title="Field #7" align="left">Units</th>
+              <th title="Field #8" align="left">Seats</th>
+              <th title="Field #9" align="left">Enrolled</th>
+              <th title="Field #10" align="left">Available</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr bgcolor="#304566" style="font-weight:bold; color:white">
+              <td colspan="100%">End of Results</td>
+            </tr>
+          </tfoot>
+          <tbody id="table">
+            <tr class="rowa">
+              <td>BIOL 101-01</td>
+              <td>Principles of Biology I</td>
+              <td>MW</td>
+              <td>10:35-11:30am</td>
+              <td>Amy Paterson</td>
+              <td>ACAD200</td>
+              <td align="right">4</td>
+              <td align="right">40</td>
+              <td align="right">39</td>
+              <td align="right">1</td>
+            </tr>
+            <tr class="rowb">
+              <td>MUS 299-01</td>
+              <td>Special Studies: Chamber Orchestra</td>
+              <td>R</td>
+              <td>6:30-9:30pm</td>
+              <td>Evgeniy Sporov</td>
+              <td>ACAD201</td>
+              <td align="right">0.5</td>
+              <td align="right">20</td>
+              <td align="right">4</td>
+              <td align="right">16</td>
+            </tr>
+            <tr class="rowa">
+              <td>ART 105-01</td>
+              <td>Drawing I</td>
+              <td>MW</td>
+              <td>10:35am-1:05pm</td>
+              <td>Tina Linville</td>
+              <td>ACAD202</td>
+              <td align="right">3</td>
+              <td align="right">16</td>
+              <td align="right">6</td>
+              <td align="right">10</td>
+            </tr>
+            <tr class="rowb">
+              <td>BUS 475-2-01</td>
+              <td>Business Internship</td>
+              <td>T</td>
+              <td>4:00-5:00pm</td>
+              <td>Christopher Guidry</td>
+              <td>ACAD203</td>
+              <td align="right">2</td>
+              <td align="right">20</td>
+              <td align="right">5</td>
+              <td align="right">15</td>
+            </tr>
+            <tr class="rowa">
+              <td>BIBL 104OL-01</td>
+              <td>Christian Foundations - New Testament</td>
+              <td> </td>
+              <td>Online</td>
+              <td>Brandon Kertson</td>
+              <td> </td>
+              <td align="right">3</td>
+              <td align="right">20</td>
+              <td align="right">6</td>
+              <td align="right">14</td>
+            </tr>
+            <tr class="rowb">
+              <td>KINE 345-01</td>
+              <td>Biomechanics</td>
+              <td>TR</td>
+              <td>9:30-10:55am</td>
+              <td>Tammy Cleek</td>
+              <td>ACAD204</td>
+              <td align="right">3</td>
+              <td align="right">24</td>
+              <td align="right">6</td>
+              <td align="right">18</td>
+            </tr>
+            <tr class="rowa">
+              <td>HIST 331-01</td>
+              <td>History and Archaeology of Ancient Greece</td>
+              <td>F</td>
+              <td>11:40am-2:40pm</td>
+              <td>Christopher Flesoras</td>
+              <td>ACAD205</td>
+              <td align="right">3</td>
+              <td align="right">20</td>
+              <td align="right">6</td>
+              <td align="right">14</td>
+            </tr>
+            <tr class="rowb">
+              <td>LDRS 201-01</td>
+              <td>WJU Transfer Academy</td>
+              <td>M</td>
+              <td>9:30-10:20am</td>
+              <td>Kristin Jensen</td>
+              <td>CROSS100</td>
+              <td align="right">1</td>
+              <td align="right">25</td>
+              <td align="right">0</td>
+              <td align="right">25</td>
+            </tr>
+            <tr class="rowa">
+              <td>PHED 111-04</td>
+              <td>Strength and Conditioning</td>
+              <td>TR</td>
+              <td>12:40-1:35pm</td>
+              <td>Kori Polee</td>
+              <td>CROSS101</td>
+              <td align="right">1</td>
+              <td align="right">20</td>
+              <td align="right">3</td>
+              <td align="right">17</td>
+            </tr>
+            <tr class="rowb">
+              <td>NT 213-01</td>
+              <td>General Epistles</td>
+              <td>MW</td>
+              <td>2:50-4:15pm</td>
+              <td>Jim Crain</td>
+              <td>CROSS102</td>
+              <td align="right">3</td>
+              <td align="right">20</td>
+              <td align="right">13</td>
+              <td align="right">7</td>
+            </tr>
+            <tr class="rowa">
+              <td>PHIL 452OL-02</td>
+              <td>Christian Perspective</td>
+              <td> </td>
+              <td>Online</td>
+              <td>Jeff Kreiser</td>
+              <td> </td>
+              <td align="right">3</td>
+              <td align="right">20</td>
+              <td align="right">21</td>
+              <td align="right">-1</td>
+            </tr>
+            <tr class="rowb">
+              <td>PSYC 410-01</td>
+              <td>Cognitive Psychology</td>
+              <td>MWF</td>
+              <td>10:35-11:30am</td>
+              <td>Erin Ambrose</td>
+              <td>CROSS103</td>
+              <td align="right">3</td>
+              <td align="right">20</td>
+              <td align="right">21</td>
+              <td align="right">-1</td>
+            </tr>
+            <tr class="rowa">
+              <td>SOC 100-01</td>
+              <td>Western Thought and Culture</td>
+              <td>TR</td>
+              <td>2:15-3:40pm</td>
+              <td>Katharine Oswald</td>
+              <td>CROSS104</td>
+              <td align="right">3</td>
+              <td align="right">20</td>
+              <td align="right">0</td>
+              <td align="right">20</td>
+            </tr>
+            <tr class="rowb">
+              <td>TEDU 251-01</td>
+              <td>Curriculum and Methods in Visual and Performing Arts</td>
+              <td>TR</td>
+              <td>4:30-5:55pm</td>
+              <td>Cheri Coulter</td>
+              <td>ACAD100</td>
+              <td align="right">3</td>
+              <td align="right">20</td>
+              <td align="right">13</td>
+              <td align="right">7</td>
+            </tr>
+            <tr class="rowa">
+              <td>THEO 451OL-02</td>
+              <td>Christian Theology</td>
+              <td> </td>
+              <td>Online</td>
+              <td>Corbett Cutts</td>
+              <td> </td>
+              <td align="right">3</td>
+              <td align="right">20</td>
+              <td align="right">20</td>
+              <td align="right">0</td>
+            </tr>
+            <tr class="rowb">
+              <td>ENGL 484-01</td>
+              <td>Metonym</td>
+              <td>W</td>
+              <td>6:00-9:00pm</td>
+              <td>Amanda Hawkins</td>
+              <td>ACAD101</td>
+              <td align="right">3</td>
+              <td align="right">20</td>
+              <td align="right">6</td>
+              <td align="right">14</td>
+            </tr>
+            <tr class="rowa">
+              <td>YMIN 100-01</td>
+              <td>Foundations of Youth Ministry</td>
+              <td>MW</td>
+              <td>1:15-2:40pm</td>
+              <td>Fritz Moga</td>
+              <td>ACAD102</td>
+              <td align="right">3</td>
+              <td align="right">20</td>
+              <td align="right">10</td>
+              <td align="right">10</td>
+            </tr>
+            <tr class="rowb">
+              <td>PPOL 111-01</td>
+              <td>American Government</td>
+              <td>MWF</td>
+              <td>10:35-11:30am</td>
+              <td>Keith Bolte</td>
+              <td>ACAD103</td>
+              <td align="right">3</td>
+              <td align="right">20</td>
+              <td align="right">15</td>
+              <td align="right">5</td>
+            </tr>
+            <tr class="rowa">
+              <td>MATH 102-01</td>
+              <td>Precalculus</td>
+              <td>MTWR</td>
+              <td>8:20-9:15am</td>
+              <td>Tammy Cleek</td>
+              <td>ACAD104</td>
+              <td align="right">4</td>
+              <td align="right">20</td>
+              <td align="right">20</td>
+              <td align="right">0</td>
+            </tr>
+            <tr class="rowb">
+              <td>ICS 215-01</td>
+              <td>Orphans &amp; Vulnerable Children</td>
+              <td>TR</td>
+              <td>9:30-10:55am</td>
+              <td>Philip Darke</td>
+              <td>ACAD105</td>
+              <td align="right">3</td>
+              <td align="right">20</td>
+              <td align="right">13</td>
+              <td align="right">7</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </body>
+
+</html>

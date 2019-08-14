@@ -41,6 +41,10 @@ body {
   color: white;
 }
 
+.container > * {
+    display: inline-block;
+}
+
 .navbar {
   overflow: hidden;
   background-color: #C52818;

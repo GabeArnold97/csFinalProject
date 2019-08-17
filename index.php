@@ -16,7 +16,7 @@
        $connect = mysqli_connect("localhost", "root", "", "csvimport");
        $time1 = $_POST['time1'];
        $time2 = $_POST['time2'];
-       $query = "SELECT * FROM table_2 WHERE CAST(TimeStart AS time) BETWEEN '". mysqli_real_escape_string($connect, $time1)  ."' AND '". mysqli_real_escape_string($connect, $time2)  ."' ORDER BY TimeStart";
+       $query = "SELECT * FROM table_2 WHERE TimeStart BETWEEN '$time1' AND '$time2' ORDER BY TimeStart AND FORMAT(TimeStart, N'hh:mm tt')";
        $search_result = mysqli_query($connect, $query);
        if (!$search_result) {
        printf("Error: %s\n", mysqli_error($connect));
@@ -99,6 +99,7 @@
                 </select><br><br>
                 <input type="submit" name="timesearch" value="Search">
                 <a href="http://localhost/csFinalProject/"><button>Clear</button></a><br><br>
+                
             </div>
             <div class="courseList">
                <h2>Course List</h2>
@@ -144,7 +145,7 @@
                                 <td>{$row['Units']}</td>
                                 <td>{$row['TotalEnrolled']}</td>
                                 <td>{$row['RoomType']}</td>
-                                <td><a href='edit.php?edit=$num'>edit</a></td>
+                                <td><a href='edit.php?edit={$row['RowNum']}'>edit</a></td>
                             </tr>";
                             $num = $num + 1;
                             }

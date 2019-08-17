@@ -1,9 +1,30 @@
 <?php
  $connect = mysqli_connect("localhost", "root", "", "csvimport")
     or die("Unable to connect");
- $query = "SELECT * FROM table_2 WHERE CourseID = 'THEO451-1'";
+ $rownum = $_GET['edit'];
+ echo "RowNum = $rownum\n";
+ $query = "SELECT * FROM table_2 WHERE CourseID IS NOT NULL AND RowNum = '$rownum'";
  $search_result = mysqli_query($connect, $query);
  $row = mysqli_fetch_array($search_result, MYSQLI_NUM);
+ if(isset($_POST['update']))
+   {
+       $newID = $_POST['cid'];
+       $newName = $_POST['cname'];
+       $newDays = $_POST['days'];
+       $newStartTime = $_POST['stime'];
+       $newEndTime = $_POST['etime'];
+       $newInstructor = $_POST['instructor'];
+       $newRoom = $_POST['room'];
+       $newUnits = $_POST['units'];
+       $newEnrolled = $_POST['enrolled'];
+       $newClassType = $_POST['classtype'];
+       $newRowNum = $_POST['rownum'];
+       /*$query = "UPDATE table_2 SET CourseID='$newID', CourseName='$newName', Days='$newDays', TimeStart='$newStartTime', TimeEnd='$newEndTime', Instructor='$newInstructor', Room='$newRoom', Units='$newUnits', TotalEnrolled='$newEnrolled', RoomType='$newClassType' WHERE RowNum='$rownum'";*/
+       echo "UPDATE table_2 SET RoomType='$newClassType' WHERE RowNum='$newRowNum'";
+       $query = "UPDATE table_2 SET RoomType='$newClassType' WHERE RowNum='$newRowNum'";
+       $res = mysqli_query($connect, $query);
+       
+   }
  ?>
  <!DOCTYPE html>
  <html lang="en">
@@ -29,27 +50,29 @@
 
     <div class="row">
       <div class="filter">
-        <form action="edit.php" method="POST">
+        <form action="index.php" method="POST">
         <h2>Course ID</h2>
-        <input type="text" id="cid" value="<?php echo $row[0]; ?>"/>
+        <input type="text" name="cid" value="<?php echo $row[0]; ?>"/>
         <h2>Course Name</h2>
-        <input type="text" id="cname" value="<?php echo $row[1]; ?>"/>
+        <input type="text" name="cname" value="<?php echo $row[1]; ?>"/>
         <h2>Days</h2>
-        <input type="text" id="days" value="<?php echo $row[2]; ?>"/>
+        <input type="text" name="days" value="<?php echo $row[2]; ?>"/>
         <h2>Start Time</h2>
-        <input type="text" id="stime" value="<?php echo $row[3]; ?>"/>
+        <input type="text" name="stime" value="<?php echo $row[3]; ?>"/>
         <h2>End Time</h2>
-        <input type="text" id="etime" value="<?php echo $row[4]; ?>"/>
+        <input type="text" name="etime" value="<?php echo $row[4]; ?>"/>
         <h2>Instructor</h2>
-        <input type="text" id="instructor" value="<?php echo $row[5]; ?>"/>
+        <input type="text" name="instructor" value="<?php echo $row[5]; ?>"/>
         <h2>Room</h2>
-        <input type="text" id="room" value="<?php echo $row[6]; ?>"/>
+        <input type="text" name="room" value="<?php echo $row[6]; ?>"/>
         <h2>Units</h2>
-        <input type="text" id="units" value="<?php echo $row[7]; ?>"/>
+        <input type="text" name="units" value="<?php echo $row[7]; ?>"/>
         <h2>Total Enrolled</h2>
-        <input type="text" id="enrolled" value="<?php echo $row[8]; ?>"/>
+        <input type="text" name="enrolled" value="<?php echo $row[8]; ?>"/>
         <h2>Classroom Type</h2>
-        <input type="text" id="classtype" value="<?php echo $row[9]; ?>"/>
+        <input type="text" name="classtype" value="<?php echo $row[9]; ?>"/>
+        <h2>Row Number</h2>
+        <input type="text" name="rownum" value="<?php echo $row[10]; ?>" readonly/>
         <br><br>
         <input type="submit" name="update" value="Update"/>
         </form>
@@ -57,25 +80,5 @@
     </div>
  </body>
 </html>
-
-<?php
-   if(isset($_POST['update']))
-   {
-       $connect = mysqli_connect("localhost", "root", "", "csvimport"); 
-       $newID = $_POST['cid'];
-       $newName = $_POST['cname'];
-       $newDays = $_POST['days'];
-       $newStartTime = $_POST['stime'];
-       $newEndTime = $_POST['etime'];
-       $newInstructor = $_POST['instructor'];
-       $newRoom = $_POST['room'];
-       $newUnits = $_POST['units'];
-       $newEnrolled = $_POST['enrolled'];
-       $newClassType = $_POST['classtype'];
-       $query = "UPDATE table_2 SET CourseID='$newID', CourseName='$newName', Days='$newDays', TimeStart='$newStartTime', TimeEnd='$newEndTime', Instructor='$newInstructor', Room='$newRoom', Units='$newUnits', TotalEnrolled='$newEnrolled', RoomType='$newClassType' WHERE CourseID='THEO451-1'";
-       $res = mysqli_query($connect, $query);
-       
-   }
-    ?>
 
 <?php mysqli_close($connect); ?>

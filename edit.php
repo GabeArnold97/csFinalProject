@@ -2,7 +2,6 @@
  $connect = mysqli_connect("localhost", "root", "", "csvimport")
     or die("Unable to connect");
  $rownum = $_GET['edit'];
- echo "RowNum = $rownum\n";
  $query = "SELECT * FROM table_2 WHERE CourseID IS NOT NULL AND RowNum = '$rownum'";
  $search_result = mysqli_query($connect, $query);
  $row = mysqli_fetch_array($search_result, MYSQLI_NUM);
@@ -19,9 +18,7 @@
        $newEnrolled = $_POST['enrolled'];
        $newClassType = $_POST['classtype'];
        $newRowNum = $_POST['rownum'];
-       /*$query = "UPDATE table_2 SET CourseID='$newID', CourseName='$newName', Days='$newDays', TimeStart='$newStartTime', TimeEnd='$newEndTime', Instructor='$newInstructor', Room='$newRoom', Units='$newUnits', TotalEnrolled='$newEnrolled', RoomType='$newClassType' WHERE RowNum='$rownum'";*/
-       echo "UPDATE table_2 SET RoomType='$newClassType' WHERE RowNum='$newRowNum'";
-       $query = "UPDATE table_2 SET RoomType='$newClassType' WHERE RowNum='$newRowNum'";
+       $query = "UPDATE table_2 SET CourseID='$newID', CourseName='$newName', Days='$newDays', TimeStart='$newStartTime', TimeEnd='$newEndTime', Instructor='$newInstructor', Room='$newRoom', Units='$newUnits', TotalEnrolled='$newEnrolled', RoomType='$newClassType' WHERE RowNum='$newRowNum'";
        $res = mysqli_query($connect, $query);
        
    }
@@ -71,8 +68,6 @@
         <input type="text" name="enrolled" value="<?php echo $row[8]; ?>"/>
         <h2>Classroom Type</h2>
         <input type="text" name="classtype" value="<?php echo $row[9]; ?>"/>
-        <h2>Row Number</h2>
-        <input type="text" name="rownum" value="<?php echo $row[10]; ?>" readonly/>
         <br><br>
         <input type="submit" name="update" value="Update"/>
         </form>

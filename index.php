@@ -2,7 +2,7 @@
    if(isset($_POST['search']))
    {
        $valueToSearch = $_POST['valueToSearch'];
-       $query = "SELECT * FROM table_2 WHERE CONCAT(CourseID, CourseName, Days, TimeStart, TimeEnd, Instructor, Room, Units, TotalEnrolled, RoomType) LIKE '%".$valueToSearch."%' AND CourseID != ''";
+       $query = "SELECT CourseID, CourseName, Days, TIME_FORMAT(TimeStart, '%h:%i %p') as TimeStart, TIME_FORMAT(TimeEnd, '%h:%i %p') as TimeEnd, Instructor, Room, Units, TotalEnrolled, RoomType, RowNum FROM table_2 WHERE CONCAT(CourseID, CourseName, Days, TimeStart, TimeEnd, Instructor, Room, Units, TotalEnrolled, RoomType) LIKE '%".$valueToSearch."%' AND CourseID != ''";
        $connect = mysqli_connect("localhost", "root", "", "csvimport");
        $search_result = mysqli_query($connect, $query);
        if (!$search_result) {
@@ -16,7 +16,7 @@
        $connect = mysqli_connect("localhost", "root", "", "csvimport");
        $time1 = $_POST['time1'];
        $time2 = $_POST['time2'];
-       $query = "SELECT * FROM table_2 WHERE TimeStart BETWEEN '$time1' AND '$time2' ORDER BY TimeStart AND FORMAT(TimeStart, N'hh:mm tt')";
+       $query = "SELECT CourseID, CourseName, Days, TIME_FORMAT(TimeStart, '%h:%i %p') as TimeStart, TIME_FORMAT(TimeEnd, '%h:%i %p') as TimeEnd, Instructor, Room, Units, TotalEnrolled, RoomType, RowNum FROM table_2 WHERE TimeStart BETWEEN '$time1' AND '$time2'  ORDER BY CourseID";
        $search_result = mysqli_query($connect, $query);
        if (!$search_result) {
        printf("Error: %s\n", mysqli_error($connect));
@@ -24,7 +24,7 @@
    }
    }
     else {
-       $query = "SELECT * FROM table_2 WHERE CourseID != ''";
+       $query = "SELECT CourseID, CourseName, Days, TIME_FORMAT(TimeStart, '%h:%i %p') as TimeStart, TIME_FORMAT(TimeEnd, '%h:%i %p') as TimeEnd, Instructor, Room, Units, TotalEnrolled, RoomType, RowNum FROM table_2 WHERE CourseID != ''";
        $connect = mysqli_connect("localhost", "root", "", "csvimport");
        $search_result = mysqli_query($connect, $query);
        if (!$search_result) {

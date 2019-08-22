@@ -20,6 +20,11 @@
        $newRowNum = $_POST['rownum'];
        $query = "UPDATE table_2 SET CourseID='$newID', CourseName='$newName', Days='$newDays', TimeStart='$newStartTime', TimeEnd='$newEndTime', Instructor='$newInstructor', Room='$newRoom', Units='$newUnits', TotalEnrolled='$newEnrolled', RoomType='$newClassType' WHERE RowNum='$newRowNum'";
        $res = mysqli_query($connect, $query);
+       ?>
+        <script type="text/javascript">
+        window.location = "http://localhost/csFinalProject/";
+        </script>      
+    <?php
        
    }
  ?>
@@ -47,7 +52,7 @@
 
     <div class="row">
       <div class="filter">
-        <form action="index.php" method="POST">
+        <form method="POST">
         <h2>Course ID</h2>
         <input type="text" name="cid" value="<?php echo $row[0]; ?>"/>
         <h2>Course Name</h2>
@@ -68,6 +73,7 @@
         <input type="text" name="enrolled" value="<?php echo $row[8]; ?>"/>
         <h2>Classroom Type</h2>
         <input type="text" name="classtype" value="<?php echo $row[9]; ?>"/>
+        <input type="hidden" name="rownum" value="<?php echo $row[10]; ?>">
         <br><br>
         <input type="submit" name="update" value="Update"/>
         </form>

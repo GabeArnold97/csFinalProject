@@ -16,7 +16,7 @@
        $connect = mysqli_connect("localhost", "root", "", "csvimport");
        $time1 = $_POST['time1'];
        $time2 = $_POST['time2'];
-       $query = "SELECT CourseID, CourseName, Days, TIME_FORMAT(TimeStart, '%h:%i %p') as TimeStart, TIME_FORMAT(TimeEnd, '%h:%i %p') as TimeEnd, Instructor, Room, Units, TotalEnrolled, RoomType, RowNum FROM table_2 WHERE TimeStart BETWEEN '$time1' AND '$time2'  ORDER BY CourseID";
+       $query = "SELECT CourseID, CourseName, Days, TIME_FORMAT(TimeStart, '%h:%i %p') as TimeStart, TIME_FORMAT(TimeEnd, '%h:%i %p') as TimeEnd, Instructor, Room, Units, TotalEnrolled, RoomType, RowNum FROM table_2 WHERE TimeStart BETWEEN '$time1' AND '$time2' AND CourseID = '' ORDER BY CourseID";
        $search_result = mysqli_query($connect, $query);
        if (!$search_result) {
        printf("Error: %s\n", mysqli_error($connect));
